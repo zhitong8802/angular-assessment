@@ -1,0 +1,24 @@
+<table class="carlist">
+  <thead>
+    <tr>
+      <th *ngFor="let head of headElements" scope="col">{{ head }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let car of carList; let i = index"
+      [routerLink]="[i]"
+      routerLinkActive="active"
+    >
+      <td>{{ car.name }}</td>
+      <td>
+        <div class="description">{{ car.description }}</div>
+      </td>
+      <td><img [src]="car.imagePath" style="max-height: 40px" /></td>
+      <td>
+        <span>{{ car.variance[1].price | currency: '' }}</span> -
+        <span>{{ car.variance[0].price | currency: '' }}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

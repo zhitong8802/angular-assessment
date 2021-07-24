@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="left">
+      <div *ngIf="isLogin">
+        Welcome <span>{{ user.displayName }}</span>
+      </div>
+    </div>
+    <div class="right">
+      <div>
+        <span>Time: {{ currentTime | date: "shortTime" }}</span>
+      </div>
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active" *ngIf="!isLogin">
+          <a routerLink="/Login">Login</a>
+        </li>
+        <li routerLinkActive="active" *ngIf="isLogin">
+          <a (click)="signout()">Signout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

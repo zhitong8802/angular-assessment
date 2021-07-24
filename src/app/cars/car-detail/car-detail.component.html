@@ -1,0 +1,40 @@
+<div *ngIf='!carNotFound'>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{ car.name }}</h1>
+      <br />
+      <img [src]="car.imagePath" style="max-height: 250px" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="carlist">
+        <thead>
+          <tr></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Description</td>
+            <td>{{ car.description }}</td>
+          </tr>
+          <tr class="variance">
+            <td colspan="2">Variance</td>
+          </tr>
+          <tr *ngFor="let variance of car.variance">
+            <td>{{ variance.info }}</td>
+            <td>{{ variance.price | currency: '' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" type="button" (click)="backToList()">
+        Back
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="carNotFound">
+  <div class="col-xs-12">
+    <h1 style="color: red;">Invalid Car ID</h1>
+  </div>
+</div>
+
